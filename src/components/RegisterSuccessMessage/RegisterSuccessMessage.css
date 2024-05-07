@@ -1,0 +1,10 @@
+.register-success {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  flex-direction: column;
+  background: #f9f9f9;
+  padding: 10px;
+  min-width: 400px;
+}

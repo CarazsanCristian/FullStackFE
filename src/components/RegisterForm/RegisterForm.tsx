@@ -7,6 +7,7 @@ import AuthService from "../../services/auth.service";
 import { RegisterUserData } from "../../types/userType";
 // import { RegisterSuccessMessage } from "../RegisterSuccessMessage/RegisterSuccessMessage";
 import YupPassword from "yup-password";
+import { RegisterSuccessMessage } from "../RegisterSuccessMessage/RegisterSuccessMessage";
 YupPassword(Yup);
 
 export const RegisterForm: React.FC = () => {
@@ -58,8 +59,7 @@ export const RegisterForm: React.FC = () => {
   };
 
   if (success) {
-    // return <RegisterSuccessMessage />;
-    alert("registered..you can now login");
+    return <RegisterSuccessMessage />;
   }
 
   return (
