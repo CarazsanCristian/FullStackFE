@@ -13,10 +13,12 @@ const globalConfig: RetryConfig = {
 };
 const notLoggedInInstance = axios.create();
 const loggedInInstance = axios.create(globalConfig);
+const loggedInUploadInstance = axios.create(globalConfig);
 
 type AxiosInstances = {
   notLoggedInInstance: AxiosInstance;
   loggedInInstance: AxiosInstance;
+  loggedInUploadInstance: AxiosInstance;
 };
 
 notLoggedInInstance.interceptors.request.use(
@@ -73,9 +75,26 @@ loggedInInstance.interceptors.response.use(
     }
   }
 );
+
+loggedInUploadInstance.interceptors.request.use(
+  async (config) => {
+    config.baseURL = "http://localhost:3600";
+    const authToken = StorageService.getToken();
+    config.headers = {
+      Accept: "application/json",
+      Authorization: `Bearer ${authToken}`,
+      "Content-Type": "multipart/form-data",
+      "Access-Control-Allow-Origin": "*",
+    } as any;
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 const requestHandlers: AxiosInstances = {
   notLoggedInInstance,
   loggedInInstance,
+  loggedInUploadInstance,
 };
 
 export default requestHandlers;

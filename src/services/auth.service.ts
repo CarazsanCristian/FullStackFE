@@ -11,7 +11,7 @@ class AuthService {
       "/auth/login",
       data
     );
-    console.log("AuthServiceResponse-login", response);
+
     if (response.data.accessToken) {
       StorageService.setToken(response.data.accessToken);
       const userData = await this.whoAmI();

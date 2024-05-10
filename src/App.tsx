@@ -8,10 +8,11 @@ import StorageService from "./services/storage.service";
 import TopMenu from "./components/TopMenu/TopMenu";
 import { ProtectedRoutes } from "./utils/ProtectedRoutes";
 import { Logout } from "./components/Logout/Logout";
+import { ShoppingList } from "./pages/ShoppingList";
 
 function App() {
   const storedToken = StorageService.getToken();
-  console.log("StoredToken apptsx", storedToken);
+
   return (
     <div>
       <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/user-secret" element={<User />} />
+            <Route path="/shopping-list" element={<ShoppingList />} />
             <Route path="/logout" element={<Logout />} />
           </Route>
           <Route path="/register" element={<Register />} />

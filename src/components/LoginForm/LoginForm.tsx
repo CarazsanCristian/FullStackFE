@@ -43,7 +43,6 @@ export const LoginForm: React.FC = () => {
       password: values.password,
     })
       .then((resp: { data: { accessToken: any } }) => {
-        console.log("Login-Response", resp);
         if (resp.data && resp.data.accessToken) {
           StorageService.setToken(resp.data.accessToken);
         }

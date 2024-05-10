@@ -19,6 +19,9 @@ export default function TopMenu() {
           <Link to="/user-secret">
             <Button color="inherit">User Secret</Button>
           </Link>
+          <Link to="/shopping-list">
+            <Button color="inherit">Shopping List</Button>
+          </Link>
           {isUserLoggedIn ? (
             <Link to="/logout">
               <Button color="inherit">Logout</Button>
